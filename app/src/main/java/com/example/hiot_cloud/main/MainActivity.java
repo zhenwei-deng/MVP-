@@ -1,4 +1,4 @@
-package com.example.hiot_cloud;
+package com.example.hiot_cloud.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hiot_cloud.R;
 import com.example.hiot_cloud.test.mvptest.model.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView( R.layout.activity_main);
         Log.d("tag","test");
 
     }
