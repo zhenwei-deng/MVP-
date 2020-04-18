@@ -3,10 +3,12 @@ package com.example.hiot_cloud.injection.component;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.hiot_cloud.injection.ApplicationContext;
+import com.example.hiot_cloud.injection.module.ActivityModule;
 import com.example.hiot_cloud.injection.module.ApplicationModule;
 import com.example.hiot_cloud.App;
-import com.example.hiot_cloud.injection.ApplicationContext;
-import com.example.hiot_cloud.injection.module.ApplicationModule;
+import com.example.hiot_cloud.injection.component.ActivityComponent;
+
 
 import javax.inject.Singleton;
 
@@ -31,6 +33,7 @@ public interface ApplicationComponent {
 
     @Component.Builder
     //ApplicationModuleBuilder是注入器生成的方法
+
     interface ApplicationModuleBuilder {
         ApplicationComponent build();
 

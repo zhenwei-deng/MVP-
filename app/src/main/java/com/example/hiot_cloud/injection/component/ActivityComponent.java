@@ -19,6 +19,7 @@ package com.example.hiot_cloud.injection.component;
 import com.example.hiot_cloud.injection.PerActivity;
 import com.example.hiot_cloud.injection.module.ActivityModule;
 import com.example.hiot_cloud.main.MainActivity;
+import com.example.hiot_cloud.test.mvptest.TestMVPActivity;
 
 import dagger.Component;
 
@@ -37,6 +38,8 @@ public interface ActivityComponent {
     //定义inject方法
     //有几个活动就要定义几个inject
     void inject(MainActivity mainActivity);
+
+    void inject(TestMVPActivity testMVPActivity);
 
     @Component.Builder
 

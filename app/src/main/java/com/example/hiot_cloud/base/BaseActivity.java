@@ -1,10 +1,17 @@
 package com.example.hiot_cloud.base;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-
+import com.example.hiot_cloud.injection.module.ActivityModule;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.hiot_cloud.App;
+import com.example.hiot_cloud.injection.component.ActivityComponent;
+import com.example.hiot_cloud.injection.component.ApplicationComponent;
+import com.example.hiot_cloud.injection.component.*;
+
 
 /**
  * MVP架构Activity的实现类
@@ -27,6 +34,10 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> e
 
     //private P Presenter代表泛型类，而不是private BasePresenter；
     private P presenter;
+    /**
+     * 活动注入器
+     */
+    private ActivityComponent mActivityComponent;
     //onCreate事件中调用setView/getView方法
 
     //因为setView/getView方法都是presenter类的，
@@ -79,5 +90,32 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> e
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+
+
+
+    public ActivityComponent getActivityComponent() {
+        if (null == mActivityComponent) {
+            mActivityComponent = DaggerActivityComponent.builder()
+                    .activityModule(getActivityModule())
+                    .applicationComponent(getApplicationComponent())
+                    .build();
+        }
+        return mActivityComponent;
+    }
+
+    public ApplicationComponent getApplicationComponent() {
+
+        Application application = getApplication();
+        App app = (App) application;
+        return app.component();
+    }
+
+    /**
+     * Get an Activity module for dependency injection.
+     */
+    protected ActivityModule getActivityModule() {
+        return new ActivityModule(this);
     }
 }

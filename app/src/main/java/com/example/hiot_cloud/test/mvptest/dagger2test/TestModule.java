@@ -13,8 +13,5 @@ public class TestModule {
 
     @Provides
     //做一个方法返回类型ThirdObj
-    public ThirdObj getThirdObj(){
-        return new ThirdObj();
-
-    }
+    public ThirdObj getThirdObj(){ return new ThirdObj(); }
 }

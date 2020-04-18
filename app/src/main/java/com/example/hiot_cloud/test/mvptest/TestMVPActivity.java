@@ -32,7 +32,10 @@ public class TestMVPActivity extends BaseActivity<TestView, TestPresenter> imple
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-       getComponent().inject( this );
+
+        //活动注入器之后，每新建的一个活动，我们都要新加一个方法，如TestMVPActivity
+        //鼠标选定inject，然后右键GO To,选择Declaration，这样就会跳转到需要增添方法的所在地
+        getActivityComponent().inject( this );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_mvp);
 
@@ -69,14 +72,14 @@ public class TestMVPActivity extends BaseActivity<TestView, TestPresenter> imple
                 this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * 创建注入器
-     *@return
-     */
-
-    public PresenterComponent getComponent(){
-          return DaggerPresenterComponent.builder().build();
-    }
+//    /**
+//     * 创建注入器
+//     *@return
+//     */
+//
+//    public PresenterComponent getComponent(){
+//          return DaggerPresenterComponent.builder().build();
+//    }
 
 
 
