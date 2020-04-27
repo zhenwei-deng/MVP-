@@ -35,7 +35,7 @@ public class TestMVPActivity extends BaseActivity<TestView, TestPresenter> imple
 
         //活动注入器之后，每新建的一个活动，我们都要新加一个方法，如TestMVPActivity
         //鼠标选定inject，然后右键GO To,选择Declaration，这样就会跳转到需要增添方法的所在地
-        getActivityComponent().inject( this );
+       // getActivityComponent().inject( this );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_mvp);
 
@@ -60,6 +60,11 @@ public class TestMVPActivity extends BaseActivity<TestView, TestPresenter> imple
     @Override
     public TestPresenter createPresenter() {
         return presenter;
+    }
+
+    @Override
+    public void injectIndependies() {
+        getActivityComponent().inject( this );
     }
 
 

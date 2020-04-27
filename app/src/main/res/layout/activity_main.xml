@@ -8,7 +8,7 @@
     tools:context=".main.MainActivity">
 
     <com.huatec.hiot_cloud.widget.NOSlideView
-        android:id="@+id/VR_view"
+        android:id="@+id/VP_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -20,7 +20,7 @@
         android:orientation="horizontal">
 
         <RadioGroup
-            android:id="@+id/RG_view"
+            android:id="@+id/RG_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -29,12 +29,12 @@
             android:paddingBottom="5dp">
 
             <RadioButton
-                android:id="@+id/RB_but1"
+                android:id="@+id/RB_message"
                 style="@style/mainRadioButtonStyle"
                 android:text="设备" />
 
             <RadioButton
-                android:id="@+id/RB_but2"
+                android:id="@+id/RB_equipment"
                 style="@style/MainButton"
                 android:button="@null"
                 android:drawableTop="@drawable/main_label_message"
@@ -44,13 +44,13 @@
                 android:textSize="13sp" />
 
             <RadioButton
-                android:id="@+id/RB_but3"
+                android:id="@+id/RB_scene"
                 style="@style/MainButton"
                 android:drawableTop="@drawable/main_label_scene"
                 android:text="场景" />
 
             <RadioButton
-                android:id="@+id/RB_but4"
+                android:id="@+id/RB_mine"
                 style="@style/MainButton"
                 android:drawableTop="@drawable/main_label_mine"
                 android:text="我的" />
