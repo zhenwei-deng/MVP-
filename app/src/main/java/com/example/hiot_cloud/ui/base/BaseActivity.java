@@ -1,4 +1,4 @@
-package com.example.hiot_cloud.base;
+package com.example.hiot_cloud.ui.base;
 
 import android.app.Application;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ import com.example.hiot_cloud.injection.component.*;
 
 //这样就实现了BaseActivity中的泛型定义
 //分别定义了视图和主持者泛型类型
-public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>> extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity<V extends BaseView,P extends BasePresenter > extends AppCompatActivity implements BaseView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         //首先重写AppCompatActivity事件
@@ -45,23 +45,23 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        injectIndependies();
         //使用基类的时候要先获取createPresenter();
         //才能用presenter它。
         // 基类的类变量presenter 就获得了值，才能调用presenter.setView(this);
         presenter = createPresenter();
         //setView中的View的视图层中的实现类是BaseActivity。
         //故this就代表传入的BaseActivity
-        presenter.setView((V) this);
+        if (presenter !=null) {
+            presenter.setView((V) this);
+        }
     }
 
     //定义抽象方法createPresenter
     //createPresenter创建
     //BaseActivity抽象类中也必须有abstract这个关键字，使BaseActivity抽象化
+    //抽象类
     public abstract P createPresenter();
-
     public abstract void injectIndependies();
-
 
     //重写onDestroy方法，调用presenter.destroy();
     //onDestroy销毁
@@ -121,4 +121,7 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
     protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
+
+
+
 }

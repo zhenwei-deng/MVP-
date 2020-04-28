@@ -1,21 +1,15 @@
-package com.example.hiot_cloud.main;
+package com.example.hiot_cloud.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.hiot_cloud.R;
-import com.example.hiot_cloud.base.BaseActivity;
-import com.example.hiot_cloud.base.BasePresenter;
-import com.example.hiot_cloud.test.mvptest.model.User;
+import com.example.hiot_cloud.ui.base.BaseActivity;
+import com.example.hiot_cloud.ui.base.BasePresenter;
 import com.example.hiot_cloud.utils.Constans;
 
 public class MainActivity extends BaseActivity {
@@ -27,9 +21,9 @@ public class MainActivity extends BaseActivity {
         Log.d("tag","test");
 
         //设置Viewpager
-        final ViewPager VP = findViewById(R.id.VP_main);
+        final ViewPager VP = findViewById(R.id.VR_main);
         //适配器MainViewPageAdapter
-        VP.setAdapter(new MainViewPageAdapter());
+        VP.setAdapter(new MainViewPageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT));
         VP.setOffscreenPageLimit( Constans.MAIN_FRAGMENT_COUNT);
         RadioGroup rgMain = findViewById(R.id.RG_main);
         rgMain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -65,6 +59,5 @@ public class MainActivity extends BaseActivity {
     @Override
     public void injectIndependies() {
         getActivityComponent().inject(this);
-
     }
 }

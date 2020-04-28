@@ -6,11 +6,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.hiot_cloud.test.mvptest.dagger2test.DaggerPresenterComponent;
-import com.example.hiot_cloud.test.mvptest.dagger2test.PresenterComponent;
-
 import com.example.hiot_cloud.R;
-import com.example.hiot_cloud.base.BaseActivity;
+import com.example.hiot_cloud.ui.base.BaseActivity;
 
 import com.example.hiot_cloud.test.mvptest.model.User;
 
@@ -62,11 +59,16 @@ public class TestMVPActivity extends BaseActivity<TestView, TestPresenter> imple
         return presenter;
     }
 
-    @Override
+
     public void injectIndependies() {
-        getActivityComponent().inject( this );
+        getActivityComponent().inject(this);
     }
 
+    @Override
+    public void showMessage(String msg) {Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+    }
+    /*
 
     //实现createPresenter方法,实现创建抽象方法
 

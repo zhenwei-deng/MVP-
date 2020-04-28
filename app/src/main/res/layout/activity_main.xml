@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
-    <com.huatec.hiot_cloud.widget.NOSlideView
-        android:id="@+id/VP_main"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/VR_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -30,7 +30,8 @@
 
             <RadioButton
                 android:id="@+id/RB_message"
-                style="@style/mainRadioButtonStyle"
+                style="@style/MainButton"
+                android:drawableTop="@drawable/main_label_equipment"
                 android:text="设备" />
 
             <RadioButton
